@@ -38,12 +38,13 @@ public class LoginSteps {
     }
 
     public boolean validateCredentials(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         try {
-            wait.until(ExpectedConditions.visibilityOfElementLocated(LoginPage.userName));
-            wait.until(ExpectedConditions.visibilityOfElementLocated(LoginPage.logOutButton));
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            driver.findElement(LoginPage.userName);
             return true;
         } catch (Exception e) {
+            this.driver.close();
             return false;
         }
     }

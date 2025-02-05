@@ -41,9 +41,6 @@ public class LoginStepsDef {
         screenShot();
         loginSteps.login();
         screenShot();
-        if(!loginSteps.validateCredentials()){
-            driver.close();
-        }
         Assertions.assertTrue(loginSteps.validateCredentials(), "Credenciales inválidas");
     }
 
