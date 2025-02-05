@@ -1,6 +1,7 @@
 package com.nttdata.steps;
 
 
+import com.nttdata.page.LoginPage;
 import com.nttdata.page.ProductsPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -60,7 +61,7 @@ public class CategorySteps {
     public boolean checkSubcategory(String subcategory) {
         try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(444));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"js-product-list-header\"]/div/h1")));
             List<WebElement> subcategories = driver.findElement(By.xpath("//ul[@data-depth='1'][.//*[@id='category-4']]")).findElements(By.tagName("li"));
             for (WebElement s : subcategories) {
                 if (s.getText().equalsIgnoreCase(subcategory)) {
